@@ -15,27 +15,22 @@ def my_output(query):
 st.set_page_config(page_title="AGENT", page_icon="🤖", layout="centered")
 
 # Background image
-st.markdown("""
+st.markdown(
+    """
     <style>
     .stApp {
-        background-image: url('bg.png');
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                    url('bg.png');
         background-size: cover;
+        background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        background-position: left top;
-    }
-    .overlay {
-        background-color: rgba(0, 0, 0, 0.5);
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
     }
     </style>
-    <div class="overlay"></div>
-""", unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True
+)
+
 
 # UI Content
 st.title("🤖 AGENT")
