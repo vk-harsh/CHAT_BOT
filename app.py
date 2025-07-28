@@ -3,25 +3,34 @@ from dotenv import load_dotenv
 import google.generativeai as genai
 import os
 
-# ✅ Must be first Streamlit command
+# ✅ First line for Streamlit config
 st.set_page_config(page_title="AGENT")
 
-# ✅ Set background image via URL
+# ✅ Set background with overlay opacity
 def set_background_image():
     st.markdown(
         """
         <style>
+        body {
+            margin: 0;
+        }
+
+        .stApp {
+            position: relative;
+            z-index: 0;
+        }
+
         .stApp::before {
             content: "";
-            background-image: url("https://cdn.pixabay.com/photo/2024/04/09/15/45/ai-generated-8686233_1280.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-image: url("https://cdn.pixabay.com/photo/2024/04/09/15/45/ai-generated-8686233_1280.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             opacity: 0.3;
             z-index: -1;
         }
@@ -30,11 +39,9 @@ def set_background_image():
         unsafe_allow_html=True
     )
 
-
-
 set_background_image()
 
-# ✅ Load environment and configure Gemini
+# ✅ Load Gemini
 load_dotenv()
 genai.configure(api_key="AIzaSyB_RYhSdu7p0z4XgcfDnubkFMpC8ksdlyE")
 model = genai.GenerativeModel("gemini-2.0-flash")
