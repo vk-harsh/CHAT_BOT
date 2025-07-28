@@ -11,16 +11,26 @@ def set_background_image():
     st.markdown(
         """
         <style>
-        .stApp {
-            background-image: url("https://cdn.pixabay.com/photo/2022/12/03/23/00/cyber-brain-7633487_1280.jpg");
+        .stApp::before {
+            content: "";
+            background-image: url("https://cdn.pixabay.com/photo/2024/04/09/15/45/ai-generated-8686233_1280.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            z-index: -1;
         }
         </style>
         """,
         unsafe_allow_html=True
     )
+
+
 
 set_background_image()
 
