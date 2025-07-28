@@ -3,6 +3,9 @@ import streamlit as st
 import os
 import google.generativeai as genai
 
+# ✅ This must be the first Streamlit command
+st.set_page_config(page_title="AGENT")
+
 load_dotenv()
 genai.configure(api_key="AIzaSyB_RYhSdu7p0z4XgcfDnubkFMpC8ksdlyE")
 
@@ -39,8 +42,6 @@ input[type="text"] {{
 """
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
-
-st.set_page_config(page_title="AGENT")
 st.markdown("<h1>AGENT</h1>", unsafe_allow_html=True)
 
 input = st.text_input("Ask Anything", key="input")
