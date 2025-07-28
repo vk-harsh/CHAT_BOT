@@ -1,10 +1,9 @@
 import streamlit as st
-import base64
 from dotenv import load_dotenv
-import os
 import google.generativeai as genai
+import os
 
-# ✅ Must be first Streamlit command
+# ✅ Must be at the top
 st.set_page_config(page_title="AGENT")
 
 # Load environment and configure Gemini
@@ -16,15 +15,14 @@ def my_output(query):
     response = model.generate_content(query)
     return response.text
 
-# ✅ Convert your uploaded image to base64
-with open("/mnt/data/background.png", "rb") as image_file:
-    encoded = base64.b64encode(image_file.read()).decode()
+# ✅ Paste your base64 string here (truncated below for brevity)
+image_base64 = "iVBORw0KGgoAAAANSUhEUgAABOAAAASwCAYAAAD5WWcEAAAACXBIWXMAAA..."  # Full string needed here
 
-# ✅ Set background CSS
+# ✅ Set CSS with background
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-    background-image: url("data:image/png;base64,{encoded}");
+    background-image: url("data:image/png;base64,{image_base64}");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -44,7 +42,6 @@ input[type="text"] {{
 </style>
 """
 
-# ✅ Inject CSS and run app
 st.markdown(page_bg_img, unsafe_allow_html=True)
 st.markdown("<h1>AGENT</h1>", unsafe_allow_html=True)
 
