@@ -49,7 +49,7 @@ st.markdown("<h1 style='text-align: center;'>🤖 AGENT</h1>", unsafe_allow_html
 query = st.text_area("Enter your query here 👇", height=100)
 
 # Submit button
-if st.button("🚀 Get Response""):
+if st.button("🚀 Get Response"):
     if query.strip() != "":
         response = my_output(query)
         st.markdown("### 📬 The Response is:")
