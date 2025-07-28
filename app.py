@@ -89,7 +89,7 @@ def my_output(query):
     return response.text
 
 # ✅ App UI in visible container
-st.markdown("<h1 style='text-align: center; color: white;'>AGENT</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: white;'>🤖AGENT</h1>", unsafe_allow_html=True)
 st.markdown("<div class='input-container'>", unsafe_allow_html=True)
 
 input = st.text_input("Ask Anything", key="input")
