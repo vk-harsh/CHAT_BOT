@@ -12,7 +12,7 @@ def set_background_image():
         """
         <style>
         .stApp {
-            background-image: url("https://cdn.pixabay.com/photo/2020/06/19/22/33/wormhole-5319067_960_720.jpg");
+            background-image: url("https://pixabay.com/photos/coding-computer-hacker-hacking-1841550/");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
