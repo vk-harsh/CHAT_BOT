@@ -16,7 +16,7 @@ def set_background():
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            opacity: 0.3;
+            background-opacity: 0.7;
         }
 
         /* Remove black bars from input, text area, buttons */
