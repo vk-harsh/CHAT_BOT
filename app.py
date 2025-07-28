@@ -1,42 +1,55 @@
-import streamlit as st
 from dotenv import load_dotenv
-import google.generativeai as genai
-import os
-
 load_dotenv()
-genai.configure(api_key=os.getenv("API_KEY"))
+import streamlit as st
+import os
+import google.generativeai as genai
+
+genai.configure(api_key="AIzaSyB_RYhSdu7p0z4XgcfDnubkFMpC8ksdlyE")
 model = genai.GenerativeModel("gemini-2.0-flash")
 
 def my_output(query):
     response = model.generate_content(query)
     return response.text
 
-# Page setup
-st.set_page_config(page_title="AGENT", page_icon="🤖", layout="centered")
+st.set_page_config(page_title="🤖AGENT", layout="centered")
 
-# Background image
-st.markdown(
-    f"""
+background_image_url = "https://raw.githubusercontent.com/vk-harsh/CHAT_BOT/blob/main/bg.png"
+st.markdown(f"""
     <style>
     .stApp {{
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                    url("https://github.com/vk-harsh/CHAT_BOT/blob/main/bg.png");
+        background-image: url("{background_image_url}");
         background-size: cover;
-        background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
+        background-position: center;
+        opacity: 0.95;
+    }}
+    .title-style {{
+        color: #ffffff;
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 30px;
+    }}
+    .textbox-style input {{
+        background-color: #ffffff33;
+        color: white;
+        font-size: 18px;
+    }}
+    .stButton button {{
+        background-color: #008CBA;
+        color: white;
+        font-size: 18px;
+        border-radius: 8px;
     }}
     </style>
-    """,
-    unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
+st.markdown('<div class="title-style">AGENT</div>', unsafe_allow_html=True)
+input = st.text_input("Input", key="input")
+submit = st.button("Ask your query")
 
-
-# UI Content
-st.title("🤖 AGENT")
-query = st.text_area("Enter your query:")
-if st.button("Get Response"):
-    response = my_output(query)
-    st.subheader("Response:")
+if submit:
+    response = my_output(input)
+    st.subheader("The Response is:")
     st.write(response)
