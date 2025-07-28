@@ -15,7 +15,7 @@ def my_output(query):
 
 # Streamlit Page Config
 st.set_page_config(
-    page_title="SyncPro_BOT",
+    page_title="AGENT",
     page_icon="🤖",
     layout="centered"
 )
@@ -43,13 +43,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # App Title
-st.markdown("<h1 style='text-align: center;'>🤖 SyncPro_BOT</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>🤖 AGENT</h1>", unsafe_allow_html=True)
 
 # Input box (textarea for multiline support)
 query = st.text_area("Enter your query here 👇", height=100)
 
 # Submit button
-if st.button("🚀 Ask Gemini"):
+if st.button("🚀 Get Response""):
     if query.strip() != "":
         response = my_output(query)
         st.markdown("### 📬 The Response is:")
