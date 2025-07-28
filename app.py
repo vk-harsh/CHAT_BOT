@@ -16,20 +16,21 @@ st.set_page_config(page_title="AGENT", page_icon="🤖", layout="centered")
 
 # Background image
 st.markdown(
-    """
+    f"""
     <style>
-    .stApp {
+    .stApp {{
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                    url('bg.png');
+                    url("https://github.com/vk-harsh/CHAT_BOT/blob/main/bg.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-    }
+    }}
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 
 # UI Content

@@ -45,3 +45,10 @@ git commit -m "added"
 git branch -M main 
 
 git remote add origin https://github.com/your_github_name/summer-bot.git
+
+NEW
+git init
+- git add .
+- git commit -m "initial commit“
+- git remote add origin https://github.com/vk-harsh/CHAT_BOT
+- git push -u origin main
