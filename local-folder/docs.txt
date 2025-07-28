@@ -1,0 +1,6 @@
+Our Goal is 
+
+Machine Learning Model trained ----> Data , File store in s3 bucket . 
+
+
+Create a venv ---> add csv file ---> create main.py 
