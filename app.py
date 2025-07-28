@@ -4,67 +4,52 @@ import streamlit as st
 import os
 import google.generativeai as genai
 
-# ✅ Configure API Key (use from .env or directly if testing)
 genai.configure(api_key="AIzaSyB_RYhSdu7p0z4XgcfDnubkFMpC8ksdlyE")
-
 model = genai.GenerativeModel("gemini-2.0-flash")
 
-# ✅ Function to get Gemini response
 def my_output(query):
     response = model.generate_content(query)
     return response.text
 
-# ✅ Streamlit Page Config
 st.set_page_config(page_title="AGENT", layout="centered")
 
-# ✅ Background Image CSS (you can change this URL to your GitHub raw image)
-st.markdown(
-    f"""
+background_image_url = "https://github.com/vk-harsh/CHAT_BOT/blob/e337c620475c9b400671e38465e690ad002e7bd2/bg.png"
+st.markdown(f"""
     <style>
     .stApp {{
-        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                    url("bg.png");
+        background-image: url("{background_image_url}");
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: center;
         background-attachment: fixed;
-        color: white;
+        background-position: center;
+        opacity: 0.95;
     }}
-    .stTextInput>div>div>input {{
-        background-color: #ffffff11;
-        color: white;
-        border: 1px solid #ffffff33;
-        border-radius: 10px;
-        padding: 10px;
-    }}
-    .stButton>button {{
-        background-color: #00b4d8;
-        color: white;
+    .title-style {{
+        color: #ffffff;
+        font-size: 40px;
         font-weight: bold;
-        border-radius: 8px;
-        padding: 10px 20px;
+        text-align: center;
+        padding-top: 30px;
     }}
-    .stButton>button:hover {{
-        background-color: #0077b6;
-        transition: 0.3s;
-    }}
-    .stHeader, .stSubheader {{
+    .textbox-style input {{
+        background-color: #ffffff33;
         color: white;
+        font-size: 18px;
+    }}
+    .stButton button {{
+        background-color: #008CBA;
+        color: white;
+        font-size: 18px;
+        border-radius: 8px;
     }}
     </style>
-    """,
-    unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
-# ✅ UI Header
-st.header("🤖 Welcome to AGENT")
+st.markdown('<div class="title-style">AGENT</div>', unsafe_allow_html=True)
+input = st.text_input("Input", key="input")
+submit = st.button("Ask your query")
 
-# ✅ Input box
-query = st.text_input("Enter your query:", key="input")
-
-# ✅ Submit button
-if st.button("Ask your query"):
-    with st.spinner("Thinking..."):
-        response = my_output(query)
-    st.subheader("Response:")
+if submit:
+    response = my_output(input)
+    st.subheader("The Response is:")
     st.write(response)
