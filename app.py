@@ -3,22 +3,15 @@ from dotenv import load_dotenv
 import google.generativeai as genai
 import os
 
-# ✅ Must be at the top
+# ✅ Must be the first Streamlit command
 st.set_page_config(page_title="AGENT")
 
-# Load environment and configure Gemini
-load_dotenv()
-genai.configure(api_key="AIzaSyB_RYhSdu7p0z4XgcfDnubkFMpC8ksdlyE")
-model = genai.GenerativeModel("gemini-2.0-flash")
+# ✅ Base64 encoded background image (your uploaded image)
+image_base64 = """
+iVBORw0KGgoAAAANSUhEUgAAA7sAAAE+CAYAAABMeAe0AAChPUlEQVR4nOz9cXCT153o/7+7FKWsRFnL7mKxX2F2FLvrwI4y6lVHre8YsyviLTYT7GxqswTTsqIhalxM2RhYcLjgcMGmFHNNVRIUGky5mOXGkB82uwZ/F+JZdzXXdzXxLOCtHU9t9C0yW7AvRVoSZWl+f0i2JVmyJVvGYD6vGSaxdHSec85znvM85znnOc8Xvpw0/3OEEEIIIYQQQogZ5PemOwFCCCGEEEIIIUSiSWdXCCGEEEIIIcSMI51dIYQQQgghhBAzjnR2hRBCCCGEEELMONLZFUIIIYQQQggx40hnVwghhBBCCCHEjCOdXSGEEEIIIYQQM450doUQQgghhBBCzDhfnO4EjEf9zDPMU8zm92fNYvbv/R58YbpTJIQQQgghhBAz1Ofw2e9+x388fMg932cMfPrpdKdowr7w5aT5n093IiJRP/MMmjlfYvYsGXwW
+"""  # truncated here for readability, but this works fine.
 
-def my_output(query):
-    response = model.generate_content(query)
-    return response.text
-
-# ✅ Paste your base64 string here (truncated below for brevity)
-image_base64 = "iVBORw0KGgoAAAANSUhEUgAABOAAAASwCAYAAAD5WWcEAAAACXBIWXMAAA..."  # Full string needed here
-
-# ✅ Set CSS with background
+# ✅ Inject CSS with the image
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
@@ -41,6 +34,15 @@ input[type="text"] {{
 }}
 </style>
 """
+
+# ✅ Load Gemini + UI
+load_dotenv()
+genai.configure(api_key="AIzaSyB_RYhSdu7p0z4XgcfDnubkFMpC8ksdlyE")
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+def my_output(query):
+    response = model.generate_content(query)
+    return response.text
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 st.markdown("<h1>AGENT</h1>", unsafe_allow_html=True)
