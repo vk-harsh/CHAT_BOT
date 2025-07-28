@@ -7,7 +7,7 @@ import os
 st.set_page_config(page_title="AGENT")
 
 # ✅ Background image CSS
-def set_background_image():
+def set_background():
     st.markdown(
         """
         <style>
@@ -17,18 +17,65 @@ def set_background_image():
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
-        .input-container {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 2rem;
+
+        /* Remove black bars from input, text area, buttons */
+        .stTextInput>div>div>input,
+        .stTextArea>div>textarea,
+        .stButton>button {
+            background-color: rgba(0, 0, 0, 0.3); /* Slightly transparent */
+            color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .stTextInput>div>div>input:focus,
+        .stTextArea>div>textarea:focus {
+            border: 1px solid #00c0ff;
+            outline: none;
+        }
+
+        .stButton>button:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .chat-container {
+            background-color: rgba(0, 0, 0, 0.5);
             border-radius: 15px;
-            max-width: 600px;
-            margin: 0 auto;
-            margin-top: 50px;
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .user-msg {
+            background-color: rgba(31, 119, 180, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+
+        .bot-msg {
+            background-color: rgba(44, 160, 44, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .input-container {
+            margin-top: 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, div {
+            color: white !important;
         }
         </style>
         """,
         unsafe_allow_html=True
     )
+
 
 set_background_image()
 
