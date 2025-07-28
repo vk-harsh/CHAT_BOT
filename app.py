@@ -77,7 +77,7 @@ def set_background():
     )
 
 
-set_background_image()
+set_background()
 
 # ✅ Load env and model
 load_dotenv()
