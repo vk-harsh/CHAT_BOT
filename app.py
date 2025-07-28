@@ -1,26 +1,58 @@
-
 from dotenv import load_dotenv 
 load_dotenv() 
 import streamlit as st 
 import os 
 import google.generativeai as genai 
 
-genai.configure(api_key="AIzaSyAx98bEywBG7mWvFVVbByTCTSB5reBt3S0")
-
+# Configure Gemini API
+genai.configure(api_key="AIzaSyB_RYhSdu7p0z4XgcfDnubkFMpC8ksdlyE")
 model = genai.GenerativeModel("gemini-2.0-flash") 
 
+# Function to get model response
 def my_output(query):
     response = model.generate_content(query) 
     return response.text 
 
-#### UI Development using streamlit 
+# Streamlit Page Config
+st.set_page_config(
+    page_title="SyncPro_BOT",
+    page_icon="🤖",
+    layout="centered"
+)
 
-st.set_page_config(page_title="SyncPro_BOT")
-st.header("SyncPro_BOT") 
-input = st.text_input("Input " , key = "input")  
-submit = st.button("Ask your query") 
+# Custom CSS for background and styling
+st.markdown("""
+    <style>
+    .main {
+        background-color: #0e1117;
+        color: white;
+        font-family: 'Courier New', monospace;
+    }
+    .stTextInput > div > div > input {
+        color: black;
+        font-weight: bold;
+    }
+    .response-box {
+        background-color: #1e293b;
+        padding: 20px;
+        border-radius: 10px;
+        color: #d1d5db;
+        font-size: 16px;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
-if submit :
-    response = my_output(input) 
-    st.subheader("The Response is=")
-    st.write(response)
+# App Title
+st.markdown("<h1 style='text-align: center;'>🤖 SyncPro_BOT</h1>", unsafe_allow_html=True)
+
+# Input box (textarea for multiline support)
+query = st.text_area("Enter your query here 👇", height=100)
+
+# Submit button
+if st.button("🚀 Ask Gemini"):
+    if query.strip() != "":
+        response = my_output(query)
+        st.markdown("### 📬 The Response is:")
+        st.markdown(f"<div class='response-box'>{response}</div>", unsafe_allow_html=True)
+    else:
+        st.warning("Please enter a valid query.")
