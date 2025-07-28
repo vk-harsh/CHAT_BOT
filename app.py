@@ -50,11 +50,17 @@ def my_output(query):
     response = model.generate_content(query)
     return response.text
 
-# ✅ UI
-st.markdown("<h1 style='text-align: center; color: white;'>AGENT</h1>", unsafe_allow_html=True)
+# ✅ UI (Fixed input box visibility)
+st.markdown("""
+    <div style='background-color: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 10px;'>
+        <h1 style='text-align: center; color: white;'>AGENT</h1>
+    </div>
+""", unsafe_allow_html=True)
 
-input = st.text_input("Ask Anything", key="input")
-submit = st.button("Ask your query")
+with st.container():
+    st.markdown("<br>", unsafe_allow_html=True)
+    input = st.text_input("Ask Anything", key="input", label_visibility="collapsed")
+    submit = st.button("Ask your query")
 
 if submit:
     response = my_output(input)
