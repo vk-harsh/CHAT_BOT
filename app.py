@@ -12,7 +12,7 @@ def set_background_image():
         """
         <style>
         .stApp {
-            background-image: url("https://cdn.pixabay.com/photo/2016/11/19/22/52/coding-1841550_1280.jpg");
+            background-image: url("https://cdn.pixabay.com/photo/2022/12/03/23/00/cyber-brain-7633487_1280.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
