@@ -1,0 +1,14 @@
+# Step 1: Make sure you're in the right directory
+cd "C:/Users/harsh/Desktop/BOT/summer-main"
+
+# Step 2: Stage all updated files
+git add .
+
+# Step 3: Commit changes with a message
+git commit -m "Updated Streamlit"
+
+# Step 4: Pull remote changes and merge histories
+git pull origin main --allow-unrelated-histories
+
+# Step 5: Push to GitHub
+git push -u origin main
